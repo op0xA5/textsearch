@@ -350,9 +350,9 @@ func (idx *Index) PrintStat(d time.Duration, last bool) {
 		compSpeed, compSpeedUnit = FormatUnit(float64(idx.compareCount - idx.lastCompareCount) / d.Seconds())
 		swapSpeed, swapSpeedUnit = FormatUnit(float64(idx.swapCount - idx.lastSwapCount) / d.Seconds())
 	}
-	printf(" Comp: %12d(%9.1f%%) %6.1f%s/s  Swap: %12d(%9.1f%%) %6.1f%s/s",
-		idx.compareCount, float64(idx.compareCount) / float64(idx.datCount) * 100, compSpeed, compSpeedUnit,
-		idx.swapCount, float64(idx.swapCount) / float64(idx.datCount) * 100, swapSpeed, swapSpeedUnit)
+	printf(" Comp: %12d(%10.3f) %6.1f%s/s  Swap: %12d(%10.3fs) %6.1f%s/s",
+		idx.compareCount, float64(idx.compareCount) / float64(idx.datCount), compSpeed, compSpeedUnit,
+		idx.swapCount, float64(idx.swapCount) / float64(idx.datCount), swapSpeed, swapSpeedUnit)
 	idx.lastCompareCount = idx.compareCount
 	idx.lastSwapCount = idx.swapCount
 }
